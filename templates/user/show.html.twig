@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Utilisateurs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Rôle</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Mot de passe</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Vérifié</th>
+                <td>{{ user.isVerified ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ user.firstNameUser }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ user.lastNameUser }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ asset('uploads/photos/' ~ user.photoUser)}}" alt="photoUser</td>
+            </tr>
+            <tr>
+                <th>Date d'anniversaire</th>
+                <td>{{ user.birthdayDateUser ? user.birthdayDateUser|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ user.phoneUser }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ user.adressUser }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ user.cityUser }}</td>
+            </tr>
+            <tr>
+                <th>Code postal</th>
+                <td>{{ user.postalCodeUser }}</td>
+            </tr>
+            <tr>
+                <th>Civilité</th>
+                <td>{{ user.civilityUser ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Date d'enregistrement</th>
+                <td>{{ user.registrationDateUser ? user.registrationDateUser|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Pseudo</th>
+                <td>{{ user.pseudoUser }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

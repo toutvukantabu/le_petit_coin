@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block body %}
+    <h1>Messages</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ message.id }}</td>
+            </tr>
+            <tr>
+                <th>Contenu du message</th>
+                <td>{{ message.contentMessage }}</td>
+            </tr>
+            <tr>
+                <th>Date du message</th>
+                <td>{{ message.dateMessage ? message.dateMessage|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ message.emailMessage }}</td>
+            </tr>
+            <tr>
+                <th>Expéditeur</th>
+                <td>{{ message.senderMessage }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('messages_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('messages_edit', {'id': message.id}) }}">Modifier</a>
+
+    {{ include('messages/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+    <h1 class="text-center">Editer son compte</h1>
+	<div class="formEdit">
+{{ form_start(form) }}
+
+
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+    <a href="{{ path('user_index') }}">back to list</a>
+	{% if is_granted('ROLE_ADMIN') %}
+    {{ include('user/_delete_form.html.twig') }}
+    {% endif %}
+
+	{{ form_end(form) }}
+	</div>
+{% endblock %}
